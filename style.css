@@ -1,0 +1,12 @@
+.desc{
+    font-family:cursive;
+    font-size: larger;
+    margin: 20px;
+    height: auto;
+    border-radius: 10px;
+    border-color: black;
+    padding: 25px;
+    border-style: dashed;
+    /* display: flexbox;
+    justify-content: center; */
+}
