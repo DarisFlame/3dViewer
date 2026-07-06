@@ -31,8 +31,11 @@ const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
 scene.add(ambientLight);
 
 const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+const directionalLight2 = new THREE.DirectionalLight(0xffffff, 1);
 directionalLight.position.set(5, 5, 5);
+directionalLight2.position.set(5, 5, -5);
 scene.add(directionalLight);
+scene.add(directionalLight2);
 
 //controls to orbit around the model
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
