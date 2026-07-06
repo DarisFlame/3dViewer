@@ -7,7 +7,7 @@ const h= innerHeight;
 
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, w/h, 0.1, 100);
-camera.position.z = 5; //move camera back
+camera.position.z = 4; //move camera back
 
 const newRenderer = new THREE.WebGLRenderer();
 newRenderer.setSize(w,h);
@@ -26,9 +26,23 @@ loader.load(
     }
 );
 
+//adding lighting
 const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
 scene.add(ambientLight);
 
 const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
 directionalLight.position.set(5, 5, 5);
 scene.add(directionalLight);
+
+//controls to orbit around the model
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
+
+const controls = new OrbitControls(camera, newRenderer.domElement);
+controls.enableDamping = true; // smoother movement
+
+function animate() {
+    requestAnimationFrame(animate);
+    controls.update();
+    newRenderer.render(scene, camera);
+}
+animate();
