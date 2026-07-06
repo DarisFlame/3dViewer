@@ -111,6 +111,17 @@ nav a{
     transition:var(--transition);
 }
 
+body{
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+img, canvas {
+    max-width: 100%;
+    height: auto;
+}
+
 nav a::after{
     content:"";
     position:absolute;
