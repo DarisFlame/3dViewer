@@ -177,3 +177,18 @@ button{
     color: var(--border);
     /* font-size: 25px; */
 }
+
+.information{
+    /* position: absolute; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color:  #260008;
+    color: green;
+    font-weight: 900;
+    text-align: center;
+    /* border: 2px solid white; */
+    width: 60%;
+    /* margin: 50px; */
+    margin-left: 20%;
+}

@@ -27,15 +27,18 @@ loader.load(
 );
 
 //adding lighting
-const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+const ambientLight = new THREE.AmbientLight(0x6472f9, 0.6);
 scene.add(ambientLight);
 
 const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
-const directionalLight2 = new THREE.DirectionalLight(0xffffff, 1);
+const directionalLight2 = new THREE.DirectionalLight(0xffffff, 1.5);
+const directionalLight3 = new THREE.DirectionalLight(0xf54927, 2);
 directionalLight.position.set(5, 5, 5);
-directionalLight2.position.set(5, 5, -5);
+directionalLight2.position.set(5, 10, -5);
+directionalLight3.position.set(-2,6,10);
 scene.add(directionalLight);
 scene.add(directionalLight2);
+scene.add(directionalLight3);
 
 //controls to orbit around the model
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
@@ -54,7 +57,7 @@ animate();
 //to create make meshes and assign them layers property
 
 loader.load(
-    'ecorche.obj',
+    'Nothing4APro.obj',
     function(object){
         object.traverse(function(child){
             if(child.isMesh){
@@ -70,3 +73,17 @@ loader.load(
 );
 
 camera.layers.enable(1);
+
+let showEcorche = false;
+
+window.addEventListener('keydown', function(event){
+    if(event.key==='9'){
+        showEcorche = !showEcorche;
+
+        if(showEcorche){
+            camera.layers.enable(1);
+        }else{
+            camera.layers.disable(1);
+        }
+    }
+});
