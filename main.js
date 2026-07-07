@@ -1,6 +1,9 @@
 import * as THREE from 'three';
 import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader.js';
 
+//updating changes to appear only in main
+
+
 //declaring width and height
 const w= innerWidth;
 const h= innerHeight;
@@ -9,7 +12,9 @@ const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, w/h, 0.1, 100);
 camera.position.z = 4; //move camera back
 
-const newRenderer = new THREE.WebGLRenderer();
+// scene.background = new THREE.Color(0x0a0a0a);
+
+const newRenderer = new THREE.WebGLRenderer({alpha:true});
 newRenderer.setSize(w,h);
 document.body.appendChild(newRenderer.domElement);
 
@@ -87,3 +92,42 @@ window.addEventListener('keydown', function(event){
         }
     }
 });
+
+//to detect different parts a raycaster must be developed
+
+const rc = new THREE.Raycaster();
+//to add a 2d mouse
+const mouse = new THREE.Vector2();
+
+window.addEventListener('click', function(event){
+    //normalization
+    mouse.x = (event.clientX/window.innerWidth)*2-1;
+    mouse.y = -(event.clientY/window.innerHeight)*2+1;
+
+    rc.setFromCamera(mouse, camera);
+
+    const intersects = rc.intersectObjects(scene.children, true);
+
+    if(intersects.length>0){
+        const clickedMesh = intersects[0].object;
+        console.log('clicked', clickedMesh.name);
+        showInfoBox(clickedMesh.name);
+    }
+});
+
+function showInfoBox(meshName) {
+    const infoBox = document.getElementById('info-box');
+    const description = meshDescriptions[meshName];
+
+    if (description) {
+        infoBox.textContent = description;
+        infoBox.style.display = 'block';
+    } else {
+        infoBox.textContent = `No description available for "${meshName}"`;
+        infoBox.style.display = 'block';
+    }
+}
+
+const descriptions = {
+    //insert descriptions for muscles here!!!!
+}
