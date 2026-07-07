@@ -49,3 +49,24 @@ function animate() {
     newRenderer.render(scene, camera);
 }
 animate();
+
+//construct a new layer
+//to create make meshes and assign them layers property
+
+loader.load(
+    'ecorche.obj',
+    function(object){
+        object.traverse(function(child){
+            if(child.isMesh){
+                child.layers.set(1);
+            }
+        });
+        scene.add(object);
+    },
+    undefined,
+    function(error){
+        console.error("mesh is unavailable!!", error);
+    }
+);
+
+camera.layers.enable(1);
