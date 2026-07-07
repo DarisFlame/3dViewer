@@ -2,11 +2,11 @@ import * as THREE from 'three';
 import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader.js';
 
 //updating changes to appear only in main
-
+const container = document.getElementById('viewer-area');
 
 //declaring width and height
-const w= innerWidth;
-const h= innerHeight;
+const w= container.clientWidth;
+const h= container.clientHeight;
 
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, w/h, 0.1, 100);
@@ -47,6 +47,7 @@ scene.add(directionalLight3);
 
 //controls to orbit around the model
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
+import { contain } from 'three/src/extras/TextureUtils.js';
 
 const controls = new OrbitControls(camera, newRenderer.domElement);
 controls.enableDamping = true; // smoother movement
@@ -114,6 +115,14 @@ window.addEventListener('click', function(event){
         showInfoBox(clickedMesh.name);
     }
 });
+
+window.addEventListener('resize', ()=>{
+    const newW = container.clientWidth;
+    const newH = container.clientHeight;
+    camera.aspect = newW/newH;
+    camera.updateProjectionMatrix;
+    newRenderer.setSize(newW, newH);
+})
 
 function showInfoBox(meshName) {
     const infoBox = document.getElementById('info-box');
