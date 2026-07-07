@@ -16,7 +16,7 @@ camera.position.z = 4; //move camera back
 
 const newRenderer = new THREE.WebGLRenderer({alpha:true});
 newRenderer.setSize(w,h);
-document.body.appendChild(newRenderer.domElement);
+container.body.appendChild(newRenderer.domElement);
 
 const loader = new OBJLoader();
 loader.load(

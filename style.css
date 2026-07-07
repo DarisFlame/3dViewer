@@ -114,7 +114,7 @@ nav a{
 body{
     margin: 0;
     padding: 0;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 img, canvas {
@@ -196,6 +196,7 @@ button{
 main{
     /* width: 60%; */
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     /* margin-right: 8rem; */
@@ -210,7 +211,7 @@ footer{
     justify-content: center;
     align-items: center;
     flex-direction: row;
-    border: 2px solid white;
+    /* border: 2px solid white; */
     background-color: #922537;
     /* box-shadow: 2px #2d0008; */
     height: 30%;
@@ -239,7 +240,7 @@ footer{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    font-size: 30px;
+    font-size: 20px;
     gap: 2rem;
 }
 
@@ -268,7 +269,7 @@ a{
 
 #viewer-area{
     width: 100%;
-    height: 60%;
+    height: 800px;
     position: relative;
 }
 
