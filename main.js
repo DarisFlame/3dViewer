@@ -45,6 +45,11 @@ scene.add(directionalLight);
 scene.add(directionalLight2);
 scene.add(directionalLight3);
 
+ambientLight.layers.enable(1);
+directionalLight.layers.enable(1);
+directionalLight2.layers.enable(1);
+directionalLight3.layers.enable(1);
+
 //controls to orbit around the model
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { contain } from 'three/src/extras/TextureUtils.js';
@@ -78,7 +83,7 @@ loader.load(
     }
 );
 
-camera.layers.enable(1);
+camera.layers.set(0);
 
 let showEcorche = false;
 
@@ -87,8 +92,10 @@ window.addEventListener('keydown', function(event){
         showEcorche = !showEcorche;
 
         if(showEcorche){
+            camera.layers.disable(0);
             camera.layers.enable(1);
         }else{
+            camera.layers.enable(0);
             camera.layers.disable(1);
         }
     }
