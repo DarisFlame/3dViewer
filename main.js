@@ -63,7 +63,7 @@ animate();
 //to create make meshes and assign them layers property
 
 loader.load(
-    'Nothing4APro.obj',
+    'ecorche_fin.obj',
     function(object){
         object.traverse(function(child){
             if(child.isMesh){
@@ -140,3 +140,6 @@ function showInfoBox(meshName) {
 const descriptions = {
     //insert descriptions for muscles here!!!!
 }
+
+//finish this task by 10th
+//have to fix the raycaster and make dialogueBoxes for different muscle groups now!!!!!!!!
